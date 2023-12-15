@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import TeamScreen from './screens/TeamScreen';
 import SettingScreen from './screens/SettingScreen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 const Tab = createBottomTabNavigator();
@@ -15,6 +16,21 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Pokedex') {
+              iconName = iconName = focused ? 'ios-list' : 'ios-list-outline';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'ios-settings' : 'ios-settings-outline';
+            } else if (route.name === 'Search') {
+              iconName = focused ? 'ios-search' : 'ios-search-outline';
+            } else if (route.name === 'Team') {
+              iconName = focused ? 'ios-people' : 'ios-people-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
           headerStyle: {
             backgroundColor: 'rgba(238,21,21,1)',
             shadowColor: 'rgba(238,21,21,1)',
@@ -27,10 +43,8 @@ export default function App() {
             borderTopWidth: 0,
 
         },
-        tabBarActiveTintColor: '#000',
-        tabBarLabelStyle: {
-          color: '#fff',
-        },
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: 'white',
         
 })}
       >
