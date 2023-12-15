@@ -41,10 +41,13 @@ export default function App() {
             shadowColor: 'rgba(238,21,21,1)',
             position: 'absolute',
             borderTopWidth: 0,
+            height: 60,
+            paddingBottom: 10,
 
         },
-        tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'white',
+        tabBarActiveTintColor: 'white',
+        tabBarInactiveTintColor: 'black',
+
         
 })}
       >
