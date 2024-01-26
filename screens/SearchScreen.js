@@ -12,7 +12,7 @@ export default function SearchScreen() {
         headerShown: false,
     }}
 >
-    <Stack.Screen name="Search" component={PokemonSearch} />
+    <Stack.Screen name="PokemonSearch" component={PokemonSearch} />
     <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
 </Stack.Navigator>
   );

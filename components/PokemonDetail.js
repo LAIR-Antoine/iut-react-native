@@ -72,8 +72,8 @@ export default function PokemonDetail() {
 
       
 
-      <TouchableOpacity style={styles.goBack} onPress={() => navigation.navigate('Home')}>
-        <Text>Go back to list</Text>
+      <TouchableOpacity style={styles.goBack} onPress={() => navigation.goBack()}>
+        <Text>Go back</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
