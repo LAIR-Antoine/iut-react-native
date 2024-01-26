@@ -1,21 +1,20 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import PokemonSearch from '../components/PokemonSearch';
+import PokemonDetail from '../components/PokemonDetail';
 
+const Stack = createStackNavigator();
 
 export default function SearchScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Search</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator
+    screenOptions={{
+        headerShown: false,
+    }}
+>
+    <Stack.Screen name="Search" component={PokemonSearch} />
+    <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
+</Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 20,
-  }
-});
