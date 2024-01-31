@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
@@ -7,10 +7,29 @@ import TeamScreen from './screens/TeamScreen';
 import SettingScreen from './screens/SettingScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ScreenOrientation from 'expo-screen-orientation';
+
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+  useEffect(() => {
+    async function setInitialOrientation() {
+      const orientation = await AsyncStorage.getItem('screenOrientation');
+  
+      if (orientation === null) {
+        await AsyncStorage.setItem('screenOrientation', 'unlocked');
+      } else if (orientation === 'locked') {
+        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+      } else {
+        await ScreenOrientation.unlockAsync();
+      }
+    }
+  
+    setInitialOrientation();
+  }, []);
 
   return (
     <NavigationContainer>
